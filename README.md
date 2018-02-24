@@ -36,3 +36,6 @@ $ docker run \
   --name "comprodls-running-service" \
   comprodls-nodejs-baseline
 ```
+
+## 3. Running vis ECS 
+TODO
