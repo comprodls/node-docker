@@ -6,19 +6,27 @@ This project serves as a baseline or seed project for creating Nodejs DOCKER con
 
 ```
 $ docker build -t comprodls-nodejs-baseline .
-No Cache Option when building
-$ docker build --no-cache -t comprodls-nodejs-baseline .
-
 $ docker run -it --rm -p 8080:5000 --name comprodls-running-service comprodls-nodejs-baseline
-
-$ docker ps
-$ docker stop comprodls-nodejs-baseline
 ```
 The ``-it `` argument is used to run in interactive mode. After runnning this you should have a prompt running inside the container
 
 Normally, a Docker container persists after it has exited. This allows you to run the container again, inspect its filesystem, and so on. However, for testing we want to run the container and delete it immediately after it exits. The ```--rm``` command line option serves this purpose.
 
 The ```--name``` command is used to give the container a name so you can refer to it later
+
+For no cache option when building
+```
+$ docker build --no-cache -t comprodls-nodejs-baseline .
+```
+
+To check & stop a running container
+```
+$ docker ps
+$ docker stop comprodls-nodejs-baseline
+```
+
+To test the container application (Express) first find your VM host IP using ```docker-machine ip``` and then open ```http://<Host IP>:8080```
+
 
 ## 2. Running IN Production 
 
