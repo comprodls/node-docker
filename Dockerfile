@@ -31,7 +31,7 @@ RUN npm install
 
 # Finally install the app, by copying in the remaining source files, 
 USER root
-COPY . $HOME/dls
+COPY . $HOME/auth
 RUN chown -R dls:dls $HOME/*
 USER dls
 
