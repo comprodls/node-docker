@@ -10,8 +10,9 @@ RUN useradd --user-group --create-home --shell /bin/false dls &&\
 # Setup $HOME
 ENV HOME=/home/dls
 
-# Copy application folder/files on the host into $HOME/auth.
-COPY package.json index.js $HOME/auth/
+# Copy application packaging files on the host into $HOME/auth.
+# We could COPY the whole application folder, but save some time on our docker builds by only copying in what we need at this point, and copying in the rest after we run npm install. This takes better advantage of docker build’s layer caching.
+COPY package.json $HOME/auth/
 
 #Files copied into the container with the COPY command will be owned by root. So, we chown them to dls after copying.
 RUN chown -R dls:dls $HOME/*
@@ -20,8 +21,14 @@ RUN chown -R dls:dls $HOME/*
 USER dls
 WORKDIR $HOME/dls
 
-# Finally, at the end to run npm install. This will run as the dls user and install the dependencies in $HOME/chat/node_modules 
+# Run npm install. This will run as the dls user and install the dependencies in $HOME/chat/node_modules 
 RUN npm install
+
+# Finally install the app, by copying in the remaining source files, 
+USER root
+COPY . $HOME/dls
+RUN chown -R dls:dls $HOME/*
+USER dls
 
 # Bypass the package.json's start command and bake it directly into the image itself. This reduces the number of processes running inside of your container
 # Secondly it causes exit signals such as SIGTERM and SIGINT to be received by the Node.js process instead of npm swallowing them.
