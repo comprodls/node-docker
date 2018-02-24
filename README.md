@@ -1,26 +1,24 @@
 # comproDLS Docker for Nodejs
 
-## Test the Docker image (build & run):
+## 1. Test the Docker image / IN Development:
 
 ```
 $ docker build -t comprodls-nodejs-baseline .
 $ docker run -it --rm --name comprodls-running-service comprodls-nodejs-baseline
 ```
+The ``-it `` argument is used to run in interactive mode. After runnning this you should have a prompt running inside the container
 
-## Running IN Production 
+Normally, a Docker container persists after it has exited. This allows you to run the container again, inspect its filesystem, and so on. However, for testing we want to run the container and delete it immediately after it exits. The ```--rm``` command line option serves this purpose.
+
+The ```--name``` command is used to give the container a name so you can refer to it later
+
+## 2. Running IN Production 
 
 ### Environment Variables
 Run with NODE_ENV set to production. This is the way you would pass in secrets and other runtime configurations to your application as well.
 
 ``` 
 -e "NODE_ENV=production"
-```
-
-### Handling Kernel Signals
-Node.js was not designed to run as PID 1 which leads to unexpected behaviour when running inside of Docker. For example, a Node.js process running as PID 1 will not respond to SIGTERM (CTRL-C) and similar signals. As of Docker 1.13, you can use the --init flag to wrap your Node.js process with a lightweight init system that properly handles running as PID 1.
-
-```
-docker run -it --init node
 ```
 
 ### Memory
@@ -35,5 +33,6 @@ Here is an example of how you would run Nodejs Docker in production:
 $ docker run \
   -e "NODE_ENV=production" \
   -m "512M" --memory-swap "1G" \
-  --name "comprodls-running-service comprodls-nodejs-baseline" \
+  --name "comprodls-running-service" \
+  comprodls-nodejs-baseline
 ```
