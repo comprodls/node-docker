@@ -1,4 +1,6 @@
 # comproDLS Docker for Nodejs
+This project serves as a baseline or seed project for creating Nodejs DOCKER containers.
+
 
 ## 1. Test the Docker image / IN Development:
 
