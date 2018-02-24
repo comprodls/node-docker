@@ -6,7 +6,7 @@ This project serves as a baseline or seed project for creating Nodejs DOCKER con
 
 ```
 $ docker build -t comprodls-nodejs-baseline .
-$ docker run -it --rm --name comprodls-running-service comprodls-nodejs-baseline
+$ docker run -it --rm -p 8080:80 --name comprodls-running-service comprodls-nodejs-baseline
 
 $ docker ps
 $ docker stop comprodls-nodejs-baseline
