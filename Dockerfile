@@ -26,7 +26,7 @@ RUN chown -R dls:dls $HOME/*
 
 # Change user and working directory
 USER dls
-WORKDIR $HOME/dls
+WORKDIR $HOME/auth
 
 # Run npm install. This will run as the dls user and install the dependencies in $HOME/chat/node_modules 
 RUN npm install
