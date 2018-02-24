@@ -14,18 +14,20 @@ Normally, a Docker container persists after it has exited. This allows you to ru
 
 The ```--name``` command is used to give the container a name so you can refer to it later
 
-For no cache option when building
+**Additional commands / options for working with docker**
+
+(1) For no cache option when building:
 ```
 $ docker build --no-cache -t comprodls-nodejs-baseline .
 ```
 
-To check & stop a running container
+(2) To check & stop a running container:
 ```
 $ docker ps
 $ docker stop comprodls-nodejs-baseline
 ```
 
-To test the container application (Express) first find your VM host IP using ```docker-machine ip``` and then open ```http://<Host IP>:8080```
+(3) To test the container application (Express) first find your VM host IP using ```docker-machine ip``` and then open ```http://<Host IP>:8080```
 
 
 ## 2. Running IN Production 
