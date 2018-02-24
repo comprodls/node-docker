@@ -2,6 +2,9 @@
 # Use a specific version, rather than node:latest, so avoid risking an accidental upgrades
 FROM node:6.11.1
 
+# Replace this with your application's default port
+EXPOSE 5000
+
 # Create an unprivileged user,called dls, to run the app inside the container. If you don’t do this, then the container will run as root, security principles. 
 # Install a more recent version of NPM, get npm has improvement a lot recently. Again, specify an exact version to avoid accidental upgrades.
 RUN useradd --user-group --create-home --shell /bin/false dls &&\
