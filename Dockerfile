@@ -9,9 +9,8 @@ EXPOSE 5000
 # root, security principles. 
 # Install a more recent version of NPM, get npm has improvement a lot recently. Again, specify an exact version to avoid 
 #accidental upgrades.
-RUN useradd --user-group --create-home --shell /bin/false dls 
-# &&\
-# npm install --global npm@3.10.10
+RUN useradd --user-group --create-home --shell /bin/false dls &&\
+  npm install --global npm@3.10.10
 
 # Setup $HOME
 ENV HOME=/home/dls
