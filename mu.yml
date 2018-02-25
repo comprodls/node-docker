@@ -1,0 +1,12 @@
+environments:
+- name: acceptance
+- name: production
+service:
+  port: 8080
+  healthEndpoint: /
+  pathPatterns:
+  - /*
+  pipeline:
+    source:
+      provider: GitHub
+      repo: comprodls/node-docker
