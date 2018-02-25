@@ -3,7 +3,7 @@
 FROM node:6.11.1
 
 # Replace this with your application's default port
-EXPOSE 5000
+EXPOSE 80
 
 # Create an unprivileged user,called dls, to run the app inside the container. If you don’t do this, then the container will run as
 # root, security principles. 
