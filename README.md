@@ -6,7 +6,7 @@ This project serves as a baseline or seed project for creating Nodejs DOCKER con
 
 ```
 $ docker build -t comprodls-nodejs-baseline .
-$ docker run -it --rm -p 8080:5000 --name comprodls-running-service comprodls-nodejs-baseline
+$ docker run -it --rm -p 8080:80 --name comprodls-running-service comprodls-nodejs-baseline
 ```
 The ``-it `` argument is used to run in interactive mode. After runnning this you should have a prompt running inside the container
 
